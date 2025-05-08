@@ -11,33 +11,27 @@
     };
   };
 
-  outputs = {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
     flake-parts,
     devenv,
-    nixpkgs,
     ...
-  } @ inputs:
+  }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux"];
-      system = "x86_64-linux";
       stateVersion = "24.11";
 
-      imports =
-        [
-          inputs.flake-parts.flakeModules.easyOverlay
-          inputs.devenv.flakeModule
-          # ./flakes/system.nix
-          # ./flakes/user.nix
-          # ./flakes/export-image.nix
-          # ./tests
-          ./configuration.nix
-        ]
-        ++ (
-          if !nixpkgs.lib.trivial.inPureEvalMode
-          then [
-            # ./flakes/dev-shell.nix
-          ]
-          else nixpkgs.lib.trivial.warn "> Cannot activate devShells while in pure eval mode!" []
-        );
+      imports = [
+        inputs.flake-parts.flakeModules.easyOverlay
+        inputs.devenv.flakeModule
+      ];
+    }
+    // {
+      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [./configuration.nix];
+        specialArgs = {inherit inputs;};
+      };
     };
 }
