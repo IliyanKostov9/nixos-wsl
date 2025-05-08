@@ -32,7 +32,7 @@
         modules = [
           inputs.home-manager.nixosModules.home-manager
           ./configuration.nix
-          ./home
+          ./home.nix
         ];
         specialArgs = {inherit inputs;};
       };

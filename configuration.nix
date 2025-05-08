@@ -6,33 +6,31 @@
 }: {
   imports = [<nixos-wsl/modules>];
 
-  wsl.enable = true;
-  wsl.defaultUser = "nixos";
-
+  wsl = {
+    enable = true;
+    defaultUser = "nixos";
+  };
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   environment.systemPackages = with pkgs; [
     xclip
     vim
     neovim
     git
-    python310
     gcc
     tmux
     gnumake
     ripgrep
     nodejs_22
     unzip
-    awscli2
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    syntaxHighlighting.enable = true;
-    oh-my-zsh = {
+  programs = {
+    zsh.enable = true;
+    gnupg.agent.enable = true;
+    neovim = {
       enable = true;
-      theme = "af-magic";
+      defaultEditor = true;
+      vimAlias = false;
     };
   };
 
