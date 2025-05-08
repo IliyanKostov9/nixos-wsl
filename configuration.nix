@@ -14,13 +14,10 @@
   environment.systemPackages = with pkgs; [
     xclip
     vim
-    neovim
     git
     gcc
-    tmux
     gnumake
     ripgrep
-    nodejs_22
     unzip
   ];
 

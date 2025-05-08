@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  lib,
   ...
 }: {
   users.users.nixos = {
@@ -14,6 +15,8 @@
     useGlobalPkgs = true;
 
     users.nixos = {pkgs, ...}: let
+      tmux-conf =
+        lib.fileContents ./tmux.conf;
       ikostov-zsh-themes = pkgs.fetchFromGitHub {
         owner = "IliyanKostov9";
         repo = "zsh-themes";
@@ -69,12 +72,6 @@
         initExtra = ''
           bindkey -M vicmd 'V' edit-command-line
         '';
-        # initExtra = lib.mkOrder 1000 ''
-        #   source ${pkgs.zsh-vi-mode}/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
-        #   bindkey -v
-        #   bindkey '^f' autosuggest-accept;
-        #   bindkey -M viins '^Q' vi-cmd-modebindkey -M viins '^Q' vi-cmd-mode
-        # '';
       };
 
       programs.direnv = {
@@ -82,6 +79,27 @@
         silent = true;
         enableZshIntegration = true;
         nix-direnv.enable = true;
+      };
+
+      programs.neovim = {
+        enable = true;
+        vimAlias = true;
+        defaultEditor = lib.mkForce true;
+        extraPackages = with pkgs; [yamllint nodejs_22 unzip];
+      };
+
+      programs.tmux = {
+        enable = true;
+        plugins = with pkgs.tmuxPlugins; [
+          resurrect
+          sensible
+          yank
+          open
+        ];
+        extraConfig = tmux-conf;
+        clock24 = true;
+        baseIndex = 1;
+        mouse = true;
       };
 
       home.packages = with pkgs; [
