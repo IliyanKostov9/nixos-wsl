@@ -20,7 +20,6 @@
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux" "aarch64-linux"];
-      stateVersion = "24.11";
 
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
@@ -30,7 +29,11 @@
     // {
       nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        modules = [./configuration.nix];
+        modules = [
+          inputs.home-manager.nixosModules.home-manager
+          ./configuration.nix
+          ./home
+        ];
         specialArgs = {inherit inputs;};
       };
     };
