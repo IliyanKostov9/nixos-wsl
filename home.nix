@@ -165,6 +165,7 @@
         awscli2
         git-all
         git-rm-local-brv
+        fzf
       ];
 
       home.stateVersion = "24.11";
