@@ -32,6 +32,31 @@
           cp ${ikostov-zsh-themes}/themes/*.zsh-theme  $out/themes/
         '';
       };
+      git-all =
+        pkgs.writeShellApplication
+        {
+          name = "git-all";
+          runtimeInputs = with pkgs; [git git-extras];
+          text = ''
+            git_message="$*"
+
+            git add .
+            git-magic -m "''${git_message}" -p
+          '';
+        };
+      git-rm-local-brv =
+        pkgs.writeShellApplication
+        {
+          name = "git-rm-local-brv";
+          runtimeInputs = [pkgs.git];
+          text = ''
+            git fetch -p && \
+              for branch in ''$(LC_ALL=C git branch -vv | grep ': gone]' | awk '{print $1}');
+                do
+                  git branch -D "''$branch";
+                done
+          '';
+        };
     in {
       programs.git.enable = true;
       programs.zsh = {
@@ -43,19 +68,10 @@
         cdpath = [
           ''
             ~/Downloads
+            /etc/nixos
           ''
         ];
-        history = {
-          size = 10000;
-          # path = "${config.xdg.dataHome}/zsh/history";
-        };
-        # plugins = [
-        #   {
-        #     name = "vi-mode";
-        #     src = pkgs.zsh-vi-mode;
-        #     file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-        #   }
-        # ];
+        history.size = 10000;
         oh-my-zsh = {
           enable = true;
           theme = "af-purple-magic";
@@ -67,8 +83,44 @@
             ''
           ];
         };
-        # inherit (common) shellAliases;
-        # inherit (common) sessionVariables;
+        shellAliases = {
+          py = "python3";
+          uy = "uv run";
+          pip = "uv pip";
+          venv = "source .venv/bin/activate";
+
+          pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
+          pip-sync = "uv pip sync requirements.txt";
+          pip-sync-toml = "uv pip sync pyproject.toml";
+
+          # venv = "eval $(pdm venv activate)";
+          pdm-sync = "pdm install && pdm sync --clean";
+          pdm-export = "pdm export -o requirements.txt";
+          uv-export = "uv pip compile pyproject.toml -o requirements.txt";
+
+          # Maven
+          mvn-jar = "mvn -f pom.xml clean package";
+          mvn-cc-jar = "mvn -s ~/.m2/cc-settings.xml -f pom.xml clean package";
+          mvn-spring = "mvn spring-boot:run";
+          mvn-deps = "mvn dependency:resolve";
+          mvn-deps-tree = "mvn dependency:tree";
+          mvn-run = "mvn compile exec:java";
+
+          # Infra
+          tf = "terraform";
+          dc = "docker";
+          dcc = "docker compose";
+          kc = "kubectl";
+
+          # Utils
+          gitroot = "cd $(git root)";
+          gitunstage = "git restore --staged";
+          gitig = "git-ignore";
+          clip = "xclip -selection clipboard";
+          ls = "eza";
+          cat = "bat";
+          base = "basename $(pwd)";
+        };
         initExtra = ''
           bindkey -M vicmd 'V' edit-command-line
         '';
@@ -103,9 +155,16 @@
       };
 
       home.packages = with pkgs; [
+        kubectl
+        kubernetes-helm
+        kind
+        docker
+        eza
+        bat
         htop
         awscli2
-        jq
+        git-all
+        git-rm-local-brv
       ];
 
       home.stateVersion = "24.11";
