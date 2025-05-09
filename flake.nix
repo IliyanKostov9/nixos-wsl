@@ -25,6 +25,7 @@
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.devenv.flakeModule
         ./flakes/system.nix
+        ./flakes/user.nix
       ];
     };
 }

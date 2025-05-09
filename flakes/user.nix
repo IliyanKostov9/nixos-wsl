@@ -10,12 +10,13 @@
     };
 in {
   flake.homeConfigurations.nixos = inputs.home-manager.lib.homeManagerConfiguration {
+    inherit (shared) pkgs;
     modules = [
       ../home.nix
     ];
     extraSpecialArgs = {
       inherit self;
-      inherit (shared) system stateVersion pkgs;
+      inherit (shared) system stateVersion;
     };
   };
 }
