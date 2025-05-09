@@ -9,14 +9,18 @@
       inherit inputs;
     };
 in {
-  flake.homeConfigurations.nixos = inputs.home-manager.lib.homeManagerConfiguration {
-    inherit (shared) pkgs;
-    modules = [
-      ../home.nix
-    ];
-    extraSpecialArgs = {
-      inherit self;
-      inherit (shared) system stateVersion;
-    };
-  };
+  flake.homeConfigurations =
+    builtins.mapAttrs
+    (user: _user-attr:
+      inputs.home-manager.lib.homeManagerConfiguration {
+        inherit (shared) pkgs;
+        extraSpecialArgs = {
+          inherit self user;
+          inherit (shared) system stateVersion;
+        };
+        modules = [
+          ../home.nix
+        ];
+      })
+    shared.users;
 }

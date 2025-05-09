@@ -9,4 +9,8 @@ with inputs; rec {
       inherit system;
       config = {allowUnfree = true;};
     };
+  config_system =
+    import
+    ../config.nix;
+  inherit (config_system) users;
 }

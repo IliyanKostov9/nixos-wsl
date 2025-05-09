@@ -3,9 +3,10 @@
   config,
   stateVersion,
   lib,
+  user,
   ...
 }: let
-  username = "nixos";
+  username = user;
   tmux-conf =
     lib.fileContents ./tmux.conf;
   ikostov-zsh-themes = pkgs.fetchFromGitHub {
@@ -164,5 +165,8 @@ in {
     fzf
     git-extras
   ];
+
+  nixpkgs.config.allowUnfree = true;
+  news.display = "silent";
   programs.home-manager.enable = true;
 }
