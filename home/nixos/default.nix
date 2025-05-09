@@ -18,7 +18,7 @@
       # userName = "iliyan-kostov";
       # userEmail = "iliyan.kostov@email.ikostov.org";
       shouldGPGSign = true;
-      # gpgKey = "6105AB13B9DCDD1B";
+      gpgKey = "B0C7F1D65DEB6718831B5E0E93860C9562C4AA2D";
     };
   };
 }
