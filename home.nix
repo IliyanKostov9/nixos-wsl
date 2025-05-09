@@ -160,6 +160,7 @@
         git-all
         git-rm-local-brv
         fzf
+        git-extras
       ];
 
       programs.home-manager.enable = true;

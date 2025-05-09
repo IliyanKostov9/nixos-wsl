@@ -24,17 +24,7 @@
       imports = [
         inputs.flake-parts.flakeModules.easyOverlay
         inputs.devenv.flakeModule
+        ./flakes/system.nix
       ];
-    }
-    // {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          inputs.home-manager.nixosModules.home-manager
-          ./configuration.nix
-          ./home.nix
-        ];
-        specialArgs = {inherit inputs;};
-      };
     };
 }
