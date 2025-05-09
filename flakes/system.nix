@@ -1,4 +1,8 @@
-{inputs, ...}: let
+{
+  inputs,
+  config,
+  ...
+}: let
   shared =
     import ./shared.nix
     {
@@ -10,6 +14,7 @@ in {
     (
       host_name: host_attr:
         inputs.nixpkgs.lib.nixosSystem {
+          system = shared.system;
           modules = [
             inputs.home-manager.nixosModules.home-manager
             ../configuration.nix
@@ -19,5 +24,5 @@ in {
           };
         }
     )
-    shared.config_system.users;
+    shared.users;
 }

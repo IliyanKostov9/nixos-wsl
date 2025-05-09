@@ -11,6 +11,6 @@ with inputs; rec {
     };
   config_system =
     import
-    ../config.nix;
+    ../config.nix {};
   inherit (config_system) users;
 }
