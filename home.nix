@@ -4,12 +4,6 @@
   lib,
   ...
 }: {
-  users.users.nixos = {
-    isNormalUser = true;
-    extraGroups = ["wheel"];
-    shell = pkgs.zsh;
-  };
-
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -168,6 +162,7 @@
         fzf
       ];
 
+      programs.home-manager.enable = true;
       home.stateVersion = "24.11";
     };
   };

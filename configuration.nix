@@ -14,11 +14,11 @@
   environment.systemPackages = with pkgs; [
     xclip
     vim
-    git
     gcc
     gnumake
     ripgrep
-    unzip
+    nix-output-monitor
+    home-manager
   ];
 
   programs = {
@@ -29,6 +29,16 @@
       defaultEditor = true;
       vimAlias = false;
     };
+  };
+  programs.ssh = {
+    startAgent = true; #NOTE: Auto-start ssh-add agent
+    enableAskPassword = true;
+  };
+
+  users.users.nixos = {
+    isNormalUser = true;
+    extraGroups = ["wheel"];
+    shell = pkgs.zsh;
   };
 
   system.stateVersion = "24.11";
