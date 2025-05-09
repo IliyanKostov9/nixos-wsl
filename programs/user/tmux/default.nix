@@ -6,9 +6,7 @@
 }:
 with lib;
 with lib.types; let
-  cfg = config.modules.dev.emulator.tmux;
-  tmux-conf =
-    lib.fileContents ./tmux.conf;
+  cfg = config.modules.tmux;
 in {
   options.modules.tmux = {
     enable = mkOption {
@@ -28,7 +26,7 @@ in {
           yank
           open
         ];
-        extraConfig = tmux-conf;
+        extraConfig = lib.fileContents ./tmux.conf;
         clock24 = true;
         baseIndex = 1;
         mouse = true;
