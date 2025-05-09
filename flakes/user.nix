@@ -19,7 +19,7 @@ in {
           inherit (shared) system stateVersion;
         };
         modules = [
-          ../home.nix
+          ../home
         ];
       })
     shared.users;
