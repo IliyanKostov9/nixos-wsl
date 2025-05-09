@@ -1,5 +1,5 @@
 {
-  description = "Nix template";
+  description = "Nix flake for WLS";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
