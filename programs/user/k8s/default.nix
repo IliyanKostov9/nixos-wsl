@@ -5,7 +5,7 @@
   ...
 }:
 with lib; let
-  cfg = config.modulesk8s;
+  cfg = config.modules.k8s;
 in {
   options.modules.k8s = {enable = mkEnableOption "k8s";};
 

@@ -16,7 +16,7 @@ in {
         Enable tmux terminal multiplexer
       '';
     };
-
+};
     config = mkIf cfg.enable {
       programs.tmux = {
         enable = true;
@@ -31,6 +31,5 @@ in {
         baseIndex = 1;
         mouse = true;
       };
-    };
   };
 }

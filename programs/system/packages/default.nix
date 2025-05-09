@@ -6,5 +6,6 @@
     gnumake
     ripgrep
     nix-output-monitor
+    home-manager
   ];
 }
