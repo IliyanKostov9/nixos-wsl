@@ -3,6 +3,8 @@
   users,
   ...
 }: {
+  networking.extraHosts = builtins.readFile /home/nixos/Documents/hosts;
+
   # NOTE: REQUIRED: for initialHashedPassword
   # users.mutableUsers = false;
   users.users =
