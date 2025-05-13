@@ -104,9 +104,7 @@ in {
         cat = "bat";
         base = "basename $(pwd)";
       };
-      initExtra = ''
-        bindkey -M vicmd 'V' edit-command-line
-      '';
+      initExtra = builtins.readFile /home/nixos/Documents/.bashrc;
     };
 
     programs.direnv = {

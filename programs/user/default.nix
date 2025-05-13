@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./firefox
     ./fonts
     ./awscli
     ./docker
