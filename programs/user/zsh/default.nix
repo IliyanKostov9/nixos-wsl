@@ -71,6 +71,7 @@ in {
         uy = "uv run";
         pip = "uv pip";
         venv = "source .venv/bin/activate";
+        dvenv = "source .devenv/state/venv";
 
         pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
         pip-sync = "uv pip sync requirements.txt";
