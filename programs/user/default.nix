@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./firefox
+    ./pcmanfm
     ./librewolf
     ./fonts
     ./awscli

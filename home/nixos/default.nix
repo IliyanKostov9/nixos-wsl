@@ -13,6 +13,7 @@
     tmux.enable = true;
     zsh.enable = true;
     librewolf.enable = true;
+    pcmanfm.enable = true;
 
     git = {
       enable = true;
