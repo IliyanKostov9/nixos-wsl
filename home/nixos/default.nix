@@ -12,7 +12,7 @@
     neovim.enable = true;
     tmux.enable = true;
     zsh.enable = true;
-    # firefox.enable = true;
+    librewolf.enable = true;
 
     git = {
       enable = true;

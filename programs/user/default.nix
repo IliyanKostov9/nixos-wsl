@@ -1,6 +1,7 @@
 _: {
   imports = [
     ./firefox
+    ./librewolf
     ./fonts
     ./awscli
     ./docker
