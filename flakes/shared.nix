@@ -8,6 +8,9 @@ with inputs; rec {
     {
       inherit system;
       config = {allowUnfree = true;};
+      overlays = [
+        nur.overlays.default
+      ];
     };
   config_system =
     import

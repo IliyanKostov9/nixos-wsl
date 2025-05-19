@@ -105,7 +105,7 @@ in {
         cat = "bat";
         base = "basename $(pwd)";
       };
-      initExtra = builtins.readFile /home/nixos/Documents/.bashrc;
+      initContent = builtins.readFile /home/nixos/Documents/.bashrc;
     };
 
     programs.direnv = {

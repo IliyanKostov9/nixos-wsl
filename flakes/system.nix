@@ -15,8 +15,9 @@ in {
       host_name: host_attr:
         inputs.nixpkgs.lib.nixosSystem {
           system = shared.system;
-          modules = [
-            inputs.home-manager.nixosModules.home-manager
+          modules = with inputs; [
+            nix-index-database.nixosModules.nix-index
+            home-manager.nixosModules.home-manager
             ../configuration.nix
           ];
           specialArgs = {
