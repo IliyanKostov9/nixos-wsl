@@ -10,7 +10,8 @@ in {
   options.modules.pcmanfm = {enable = mkEnableOption "pcmanfm";};
 
   config = mkIf cfg.enable {
-  home.packages = with pkgs; [
-    pcmanfm
-  ];
+    home.packages = with pkgs; [
+      pcmanfm
+    ];
+  };
 }
