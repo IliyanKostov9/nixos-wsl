@@ -1,5 +1,6 @@
 _: {
   imports = [
+    ./messaging
     ./firefox
     ./pcmanfm
     ./librewolf
