@@ -11,7 +11,7 @@
         createHome = true;
         isNormalUser = true;
         description = "user";
-        extraGroups = ["wheel"];
+        extraGroups = ["wheel" "docker"];
       }
     )
     users;

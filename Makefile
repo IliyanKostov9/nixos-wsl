@@ -12,3 +12,16 @@ home-update:  ## Build home configuration for default user
 flake-update:
 	nix flake update |& nom
 
+
+.PHONY: clean clean-sys clean-usr optimise
+clean: clean-sys clean-usr optimise
+
+clean-usr : ## Remove old user generations
+	nix-collect-garbage -d |& nom
+
+clean-sys: ## Remove old system generations
+	sudo -v && sudo nix-collect-garbage -d |& nom
+
+optimise: ## Optimize nix store by making each package unique. Warning: The operation is resource intensive
+	nix store optimise
+

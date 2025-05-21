@@ -8,6 +8,7 @@
     ./programs/system
     ./hosts/system/users
     ./hosts/system/network
+    ./hosts/system/docker
     ./hosts/system/env-vars
   ];
   wsl = {

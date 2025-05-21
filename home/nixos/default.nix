@@ -12,8 +12,8 @@
     neovim.enable = true;
     tmux.enable = true;
     zsh.enable = true;
-    librewolf.enable = true;
-    pcmanfm.enable = true;
+    librewolf.enable = false;
+    pcmanfm.enable = false;
 
     git = {
       enable = true;
