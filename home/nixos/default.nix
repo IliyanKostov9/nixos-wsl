@@ -12,7 +12,7 @@
     neovim.enable = true;
     tmux.enable = true;
     zsh.enable = true;
-    messaging.enable = true;
+    chromium.enable = true;
 
     git = {
       enable = true;
