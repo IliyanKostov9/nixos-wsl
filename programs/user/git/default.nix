@@ -33,6 +33,14 @@ with lib.types; let
             done
       '';
     };
+  git-history-rebase =
+    pkgs.writeShellApplication
+    {
+      name = "git-history-rebase";
+      runtimeInputs = [pkgs.git];
+
+      text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;
+    };
 in {
   options.modules.git = {
     enable = mkEnableOption "git";
@@ -73,6 +81,7 @@ in {
       git-all
       git-rm-local-brv
       git-extras
+      git-history-rebase
     ];
 
     programs.git = {
