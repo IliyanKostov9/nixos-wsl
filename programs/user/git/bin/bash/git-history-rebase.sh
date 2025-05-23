@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 ## VARS
-MAIN_BRANCH_NAME="master"
+MAIN_BRANCH_NAME=$(git remote show "$(git remote get-url origin)" | sed -n '/HEAD branch/s/.*: //p') 
 FEAT_BRANCH_NAME=$(git rev-parse --abbrev-ref HEAD)
 
 
@@ -102,6 +102,6 @@ if [[ $option == 'y' ]]; then
     cherry_pick
 fi
 
-echo -e "\n\nOperation finished!"
+echo -e "\n\nOperation finished!\nNow execute command 'git push origin HEAD -f' to push your changes remotely."
 
 

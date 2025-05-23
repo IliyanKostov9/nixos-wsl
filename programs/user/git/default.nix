@@ -39,7 +39,7 @@ with lib.types; let
       name = "git-history-rebase";
       runtimeInputs = [pkgs.git];
 
-      text = builtins.readFile ../bin/bash/git/git-history-rebase.sh;
+      text = builtins.readFile ./bin/bash/git-history-rebase.sh;
     };
 in {
   options.modules.git = {
