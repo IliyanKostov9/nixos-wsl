@@ -19,9 +19,12 @@ in {
             nix-index-database.nixosModules.nix-index
             home-manager.nixosModules.home-manager
             ../configuration.nix
+            {
+              nixpkgs.pkgs = shared.pkgs;
+            }
           ];
           specialArgs = {
-            inherit (shared) pkgs system stateVersion users;
+            inherit (shared) system stateVersion users;
           };
         }
     )
