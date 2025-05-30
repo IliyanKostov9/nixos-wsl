@@ -1,8 +1,8 @@
 _: {
   imports = [
     ./chromium
+    ./dbeaver
     ./firefox
-    ./pcmanfm
     ./librewolf
     ./fonts
     ./awscli
