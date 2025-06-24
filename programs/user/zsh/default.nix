@@ -61,6 +61,7 @@ in {
         custom = "${zsh-themes}";
         plugins = [
           ''
+            ssh-agent
             direnv
             vi-mode
           ''
@@ -69,7 +70,7 @@ in {
       shellAliases = {
         py = "python3";
         uy = "uv run";
-        pip = "uv pip";
+        pip3 = "uv pip";
         venv = "source .venv/bin/activate";
         dvenv = "source .devenv/state/venv/bin/activate";
 

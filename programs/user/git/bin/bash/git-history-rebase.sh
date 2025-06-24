@@ -103,5 +103,6 @@ if [[ $option == 'y' ]]; then
 fi
 
 echo -e "\n\nOperation finished!\nNow execute command 'git push origin HEAD -f' to push your changes remotely."
+git push origin HEAD -f
 
 
