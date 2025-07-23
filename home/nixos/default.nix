@@ -18,7 +18,7 @@
       enable = true;
       userName = "iliyan-kostov";
       shouldGPGSign = true;
-      gpgKey = "B0C7F1D65DEB6718831B5E0E93860C9562C4AA2D";
+      gpgKey = "92898C6DC1240F5E0702CE7D82576BD583122E10";
     };
   };
 }
