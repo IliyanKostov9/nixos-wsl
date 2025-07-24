@@ -86,6 +86,7 @@ in {
 
     programs.git = {
       enable = true;
+      lfs.enable = true;
       inherit (cfg) userName userEmail;
       ignores = [
         "*~"
