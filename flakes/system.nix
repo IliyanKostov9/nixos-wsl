@@ -10,7 +10,7 @@
     };
 in {
   flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
-    system = shared.system;
+    inherit (shared) system;
     modules = with inputs; [
       nix-index-database.nixosModules.nix-index
       home-manager.nixosModules.home-manager
