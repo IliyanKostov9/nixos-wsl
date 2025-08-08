@@ -1,7 +1,5 @@
 _: {
   users = {
-    iliyan = {};
-    nixos = {
-    };
+    nixos = {};
   };
 }

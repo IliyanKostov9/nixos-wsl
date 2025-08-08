@@ -18,7 +18,7 @@ in {
           modules = with inputs; [
             nix-index-database.nixosModules.nix-index
             home-manager.nixosModules.home-manager
-            ../configuration.nix
+            ../hosts/system
             {
               nixpkgs.pkgs = shared.pkgs;
             }

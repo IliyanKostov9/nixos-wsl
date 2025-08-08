@@ -5,11 +5,11 @@
 }: {
   imports = [
     <nixos-wsl/modules>
-    ./programs/system
-    ./hosts/system/users
-    ./hosts/system/network
-    ./hosts/system/docker
-    ./hosts/system/env-vars
+    ../../programs/system
+    ./users
+    ./network
+    ./docker
+    ./env-vars
   ];
   wsl = {
     enable = true;
