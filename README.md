@@ -46,9 +46,6 @@ To get started, first run `make build` for the script to build your system and u
 
 ```markdown
 .
-.
-
-.
 ├── config
 ├── config.nix
 ├── flake.lock

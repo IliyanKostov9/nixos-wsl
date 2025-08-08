@@ -6,14 +6,13 @@
 }: let
   username = user;
 in {
-  imports = (
+  imports =
     if builtins.pathExists ./${username}
     then [./${username}]
     else
       lib.warn
       "> User: ${username} DOESN'T have home directory under ./home! Defaulting to NONE... "
-      []
-  );
+      [];
 
   home = {
     homeDirectory = "/home/${username}";
