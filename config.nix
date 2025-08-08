@@ -1,5 +1,10 @@
 _: {
   users = {
-    nixos = {};
+    nixos = {
+      isNormalUser = true;
+      createHome = true;
+      description = "Nixos profile";
+      extraGroups = ["wheel" "docker"];
+    };
   };
 }

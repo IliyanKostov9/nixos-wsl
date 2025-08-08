@@ -7,11 +7,8 @@
     builtins.mapAttrs
     (
       _: user-attr: {
+        inherit (user-attr) isNormalUser description extraGroups createHome;
         shell = pkgs.zsh;
-        createHome = true;
-        isNormalUser = true;
-        description = "user";
-        extraGroups = ["wheel" "docker"];
       }
     )
     users;

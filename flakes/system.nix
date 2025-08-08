@@ -9,24 +9,18 @@
       inherit inputs;
     };
 in {
-  flake.nixosConfigurations =
-    builtins.mapAttrs
-    (
-      host_name: host_attr:
-        inputs.nixpkgs.lib.nixosSystem {
-          system = shared.system;
-          modules = with inputs; [
-            nix-index-database.nixosModules.nix-index
-            home-manager.nixosModules.home-manager
-            ../hosts/system
-            {
-              nixpkgs.pkgs = shared.pkgs;
-            }
-          ];
-          specialArgs = {
-            inherit (shared) system stateVersion users;
-          };
-        }
-    )
-    shared.users;
+  flake.nixosConfigurations.nixos = inputs.nixpkgs.lib.nixosSystem {
+    system = shared.system;
+    modules = with inputs; [
+      nix-index-database.nixosModules.nix-index
+      home-manager.nixosModules.home-manager
+      ../hosts/system
+      {
+        nixpkgs.pkgs = shared.pkgs;
+      }
+    ];
+    specialArgs = {
+      inherit (shared) system stateVersion users;
+    };
+  };
 }
