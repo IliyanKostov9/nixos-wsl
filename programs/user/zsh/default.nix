@@ -71,16 +71,12 @@ in {
         py = "python3";
         uy = "uv run";
         pip3 = "uv pip";
-        venv = "source .venv/bin/activate";
-        dvenv = "source .devenv/state/venv/bin/activate";
+        venv = "source .venv/bin/activate 2> /dev/null && echo 'Activated venv in .venv/bin/activate' || source .devenv/state/venv/bin/activate && echo 'Activated venv in .devenv/state/venv/bin/activate'";
 
         pip-lock = "uv pip compile pyproject.toml -o requirements.txt";
         pip-sync = "uv pip sync requirements.txt";
         pip-sync-toml = "uv pip sync pyproject.toml";
 
-        # venv = "eval $(pdm venv activate)";
-        pdm-sync = "pdm install && pdm sync --clean";
-        pdm-export = "pdm export -o requirements.txt";
         uv-export = "uv pip compile pyproject.toml -o requirements.txt";
 
         # Maven
@@ -106,7 +102,6 @@ in {
         cat = "bat";
         base = "basename $(pwd)";
       };
-      # initContent = builtins.readFile /home/nixos/Documents/.bashrc;
     };
 
     programs.direnv = {

@@ -16,8 +16,8 @@ in {
         docker
         lazydocker
         docker-buildx
-        docker-credential-helpers
         ;
+      # docker-credential-helpers
       # nerdctl
     };
   };
