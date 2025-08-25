@@ -1,24 +1,4 @@
-## Hotkeys
+# Hotkeys
 
-### Flameshot
-
-Win + Shift + f
-
-### Normcap
-
-Win + Shift + n
-
-### Firefox
-
-Win + Ctrl + m
-
-### Chromium
-
-Win + Ctrl + c
-
-## Shortcuts
-
-'#' = Windows key
-^ = Ctrl key
-+ = Shift key
-! = Alt key
+1. Create desktop shortcuts for all of the hotkeys (including bat files)
+2. Copy-paste them at: `C:\Users\user\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup`, so that they'll autostart on windows boot
